@@ -68,7 +68,7 @@ function Root() {
           <li>
             <Link
               className={`nav-link ${currPageIndex === index ? "active" : ""}`}
-              to={`/${index > 0 ? `${page}` : ""}`}
+              to={`/Space-Tourism/${index > 0 ? `${page}` : ""}`}
               onClick={() => {
                 handleSetCurrPageIndex(index);
                 setBackgroundImg(backgroundImgs[index]);

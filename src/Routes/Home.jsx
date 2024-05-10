@@ -17,7 +17,7 @@ function Home() {
       </div>
       <div className="home col-right">
         <Link
-          to="/destination"
+          to="/Space-Tourism/destination"
           onClick={() => handleSetCurrPageIndex(1)}
           className="home-explore-button"
         >

@@ -14,19 +14,19 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: "/",
+        path: "/Space-Tourism/",
         element: <Home />,
       },
       {
-        path: "/destination",
+        path: "/Space-Tourism/destination",
         element: <Destination />,
       },
       {
-        path: "/crew",
+        path: "/Space-Tourism/crew",
         element: <Crew />,
       },
       {
-        path: "/technology",
+        path: "/Space-Tourism/technology",
         element: <Technology />,
       },
     ],
