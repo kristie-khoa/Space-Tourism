@@ -11,6 +11,7 @@ import Destination from "./Destination";
 import Crew from "./Crew";
 import Technology from "./Technology";
 import hamburger from "/assets/shared/hamburger.svg";
+import data from "../data/data.json";
 
 const backgroundImgs = [
   backgroundHome,
@@ -20,7 +21,7 @@ const backgroundImgs = [
 ];
 
 function Root() {
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const [currPageIndex, setCurrPageIndex] = useState(
@@ -38,9 +39,9 @@ function Root() {
     localStorage.setItem("currPageIndex", JSON.stringify(index));
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   useEffect(() => {
     function handleResize() {
@@ -55,65 +56,65 @@ function Root() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const getData = async () => {
-    const res = await axios.get("./data.json");
-    console.log(res.data);
-    setData(res.data);
-  };
+  // const getData = async () => {
+  //   const res = await axios.get("./data.json");
+  //   console.log(res.data);
+  //   setData(res.data);
+  // };
 
-  if (data) {
-    const navLinks = ["home", "destination", "crew", "technology"].map(
-      (page, index) => {
-        return (
-          <li>
-            <Link
-              className={`nav-link ${currPageIndex === index ? "active" : ""}`}
-              to={`/Space-Tourism/${index > 0 ? `${page}` : ""}`}
-              onClick={() => {
-                handleSetCurrPageIndex(index);
-                setBackgroundImg(backgroundImgs[index]);
-                setIsNavOpen(false);
-              }}
-            >
-              <span>{`0${index}`}</span> {page.toUpperCase()}
-            </Link>
-          </li>
-        );
-      }
-    );
+  // if (data) {
+  const navLinks = ["home", "destination", "crew", "technology"].map(
+    (page, index) => {
+      return (
+        <li>
+          <Link
+            className={`nav-link ${currPageIndex === index ? "active" : ""}`}
+            to={`/Space-Tourism/${index > 0 ? `${page}` : ""}`}
+            onClick={() => {
+              handleSetCurrPageIndex(index);
+              setBackgroundImg(backgroundImgs[index]);
+              setIsNavOpen(false);
+            }}
+          >
+            <span>{`0${index}`}</span> {page.toUpperCase()}
+          </Link>
+        </li>
+      );
+    }
+  );
 
-    return (
-      <div
-        className="layout"
-        style={{
-          backgroundImage: `url(${backgroundImg})`,
-          backgroundSize: "cover",
+  return (
+    <div
+      className="layout"
+      style={{
+        backgroundImage: `url(${backgroundImg})`,
+        backgroundSize: "cover",
+      }}
+    >
+      <img className="logo" src={logo} />
+      <img
+        onClick={() => {
+          setIsNavOpen(!isNavOpen);
         }}
-      >
-        <img className="logo" src={logo} />
-        <img
-          onClick={() => {
-            setIsNavOpen(!isNavOpen);
-          }}
-          className="hamburger"
-          src={hamburger}
-        />
-        <div className={`nav-bar ${isNavOpen ? "open" : ""}`}>
-          <div className="header-line"></div>
-          <ul>{navLinks}</ul>
-        </div>
-
-        <Outlet
-          context={{
-            destinationData,
-            crewData,
-            technologyData,
-            handleSetCurrPageIndex,
-          }}
-        />
+        className="hamburger"
+        src={hamburger}
+      />
+      <div className={`nav-bar ${isNavOpen ? "open" : ""}`}>
+        <div className="header-line"></div>
+        <ul>{navLinks}</ul>
       </div>
-    );
-  }
+
+      <Outlet
+        context={{
+          destinationData,
+          crewData,
+          technologyData,
+          handleSetCurrPageIndex,
+        }}
+      />
+    </div>
+  );
 }
+// }
 
 export default Root;
