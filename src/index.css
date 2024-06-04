@@ -3,9 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-#root {
+/* #root {
   height: 100dvh;
-}
+} */
 
 body {
   width: 100%;
@@ -13,7 +13,7 @@ body {
 }
 
 .layout {
-  height: 100vh;
+  height: 100dvh;
   padding: 2rem 0rem 2rem 10rem;
   display: flex;
   flex-direction: column;
