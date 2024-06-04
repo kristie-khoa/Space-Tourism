@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+#root {
+  height: 100dvh;
+}
 
 body {
   width: 100%;
